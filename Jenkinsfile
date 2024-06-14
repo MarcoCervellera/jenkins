@@ -17,6 +17,8 @@ pipeline {
                         -H 'Content-Type: application/x-www-form-urlencoded'
                     """, returnStdout: true).trim()
 
+                    echo response;
+
                     def jsonResponse = readJSON text: response
                     env.SF_ACCESS_TOKEN = jsonResponse.access_token
                     env.SF_INSTANCE_URL = jsonResponse.instance_url
